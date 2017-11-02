@@ -17,12 +17,14 @@ public static void baseball(int numPlayers) {
 	int i = 0; // incrementer 
 	int i2 = 0;// Incrementer 2
 	int tempValue = 0; // value holder
-	int sum = 0;
-	int	sum2 =0;
-	System.out.println("How many bats will we average out for our players?");
+//	int sum = 0;
+	int count = 0;
+	double Score = 0.0;
+		System.out.println("How many bats will we average out for our players?");
 	numBats = scnr.nextInt();
-	numBats = numBats+1; // had to add 1 to account for names holding first column. 
-	int[][] playersBats = new int [numPlayers][numBats];
+	numBats = numBats+3; // had to add 1 to account for names holding first column. 
+//	double []	sum2 = new double [numPlayers];
+	double [][] playersBats = new double [numPlayers][numBats];
 	
 	
 	for (i = 0; i < numPlayers; i++) {
@@ -34,9 +36,9 @@ public static void baseball(int numPlayers) {
 	for (i =0; i < numPlayers; i++)
 	{
 		i2 = 1; // had to iterate from one to account for names at first column
-		while (i2 < numBats)
+		while (i2 < numBats -2)
 		{
-			for (int j =1; j < numBats; j++) {
+			for (int j =1; j < numBats-2; j++) {
 				String suffix = " ";
 					if (j == 1) {
 				suffix = "st";
@@ -54,15 +56,15 @@ public static void baseball(int numPlayers) {
 				}
 			
 				
-			
+			tempValue = (int) playersBats[i][0];
 //			System.out.println("input bats");
-			System.out.println("Now enter your results at bat for player " +playersBats[i][0] + " the " + (i2) + suffix + " time at bat");
+			System.out.println("Now enter your results at bat for player " + tempValue + " the " + (i2) + suffix + " time at bat");
 			tempValue = scnr.nextInt();
 			playersBats[i][i2] = tempValue;
 			i2++;
 			
-			
 		}
+			
 		}
 		
 	}
@@ -71,71 +73,73 @@ public static void baseball(int numPlayers) {
 		System.out.println(Arrays.toString(playersBats[i]));
 	}
 
+	for(i = 0; i < numPlayers; i++) {
+		i2 = 1;
+		count = 0;
+		Score = 0;
+		while (i2 < numBats -2) { // -2 to input into the last 2 sections of the array to store the avgs.
+			
+			if (playersBats[i][i2] > 0) { // to determine when an at bat converts to a base
+				count++;					 // to determine batting average
+				Score += playersBats[i][i2]; // to determine slugging percentage
+			}
+				i2++;
+		}
+		
+			playersBats[i][numBats-2] = Score/(numBats-3);   // numbats -2 to put in correct allocation. numbats -3 to correlate with the added player # and the 2 batting avgs 
+		
+
+			playersBats[i][numBats-1] = (double)count/(numBats-3); // numbats -1 to correlate with the first position to determine avg
+		
+			
+			System.out.println("Player number #" + playersBats[i][numBats-numBats]+" average: " +playersBats[i][numBats-1] + "		Slugging percentage: " + playersBats[i][numBats-2]);
+			
+	}
+	System.out.println("Stats for your team: (NOTE: First number will indicate jersey number." );
+	for (i = 0; i < playersBats.length; i++) {
+		System.out.println(Arrays.toString(playersBats[i]));
+	
+	}
+	
+//	System.out.println("Stats for your team: (NOTE: First number will indicate jersey number." );
+//	for (i = 0; i < playersBats.length; i++) {
+//		System.out.println("Player number #" + playersBats[i] +" average: " + playersBats[numBats-1] + "Slugging percentage: " + playersBats[numBats-2]);
+//	
+//	}
+		
+	
+	
+//		for (i2 = 1; i2 < numBats; i2++) { // in order to calculate sum, has to start at 1 to ignore the player number
+//			sum += playersBats[0][i2];
+//		}
+//		System.out.println(sum);
+	
+	
+		
+//	for (i =0; i < numPlayers; i++) {
+//		
+//		i2 =0;
+//		tempValue = 0;
+//		while (i2 < numBats -1) {
+//			i2++;
+////			tempValue += playersBats[i][i2];
+//			sum2[i] += playersBats[i][i2];
+////			sum2[i] = tempValue;
+//			}
+//		System.out.println(Arrays.toString(sum2));
+//		}
+	
+	scnr.close();
+	}
 
 		
-	
-	
 		
-	}
-		
-		
-//	for (int i =0; i < arr1.length; i++) {
-//		if (i+1 == 1) {
-//		suffix = "st";
-//		}
-//		if (i+1%10 == 2) { // this will remain accurate until the teens position, would need to create an additional if statement. 
-//			suffix = "nd";
-//			
-//		}
-//		if (i+1%10 == 3) {
-//			suffix = "rd";
-//			
-//		}
-//		if (i+1 > 3) { // this breaks everything over 3 from happening. 
-//			suffix = "th";
-//		}
-//		
-//			
-//		System.out.println("Now enter your results at bat for the " + (i+1) + suffix + " time at bat");
-//		arr1[playerNumber][i] = scnr.nextInt();
-//		
-//		sluggingAvg += arr1[playerNumber][i];
-//		
-//		if (arr1[playerNumber][i] > 0) {
-//			
-//			j++;
-//		}
-//
-//	}
-//	System.out.println(j);
-//	sluggingAvg = sluggingAvg/arr1.length;
-//	System.out.println(sluggingAvg);
-	
-	
-//public static int words(int z, int y) {
-//	for (z =0; z < y; z++) {
-//	String suffix = " ";
-//		if (z+1 == 1) {
-//	suffix = "st";
-//	}
-//	if (z+1%10 == 2) { // this will remain accurate until the teens position, would need to create an additional if statement. 
-//		suffix = "nd";
-//		
-//	}
-//	if (z+1%10 == 3) {
-//		suffix = "rd";
-//		
-//	}
-//	if (z+1 > 3) { // this breaks everything over 3 from happening. 
-//		suffix = "th";
-//	}
-//	System.out.println("Now enter your results at bat for the " + (z+1) + suffix + " time at bat");
-//	
-//	
-//	
-//}
-//	return suffix;
-//}
+
+
+
+
+
+
 
 public static void main(String[] args) {
 
