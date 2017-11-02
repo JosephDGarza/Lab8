@@ -57,7 +57,6 @@ public static void baseball(int numPlayers) {
 			
 				
 			tempValue = (int) playersBats[i][0];
-//			System.out.println("input bats");
 			System.out.println("Now enter your results at bat for player " + tempValue + " the " + (i2) + suffix + " time at bat");
 			tempValue = scnr.nextInt();
 			playersBats[i][i2] = tempValue;
@@ -68,10 +67,10 @@ public static void baseball(int numPlayers) {
 		}
 		
 	}
-	System.out.println("Stats for your team: (NOTE: First number will indicate jersey number." );
-	for (i = 0; i < playersBats.length; i++) {
-		System.out.println(Arrays.toString(playersBats[i]));
-	}
+//	System.out.println("Stats for your team: (NOTE: First number will indicate jersey number." );
+//	for (i = 0; i < playersBats.length; i++) {
+//		System.out.println(Arrays.toString(playersBats[i]));
+//	}
 
 	for(i = 0; i < numPlayers; i++) {
 		i2 = 1;
